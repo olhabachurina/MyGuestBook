@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Register";
+}
+
+<h2>Регистрация</h2>
+
+<form asp-action="Register" method="post" onsubmit="return validateForm()">
+    <div class="form-group">
+        <label for="name">Логин:</label>
+        <input type="text" class="form-control" id="username" name="name" onblur="checkUsername()" required />
+        <span class="tooltip-text">Логин должен содержать 5-15 символов и быть алфавитно-цифровым.</span>
+        <p id="username-suggestion" class="error-message"></p>
+        <p id="username-error" class="error-message"></p>
+    </div>
+    <div class="form-group">
+        <label for="password">Пароль:</label>
+        <input type="password" class="form-control" id="password" name="password" required />
+        <span class="tooltip-text">Пароль должен содержать 8-20 символов, включая как минимум одну цифру, одну строчную букву и одну заглавную букву.</span>
+        <p id="password-error" class="error-message"></p>
+    </div>
+    <div class="form-group">
+        <label for="confirmPassword">Подтверждение пароля:</label>
+        <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required />
+        <span class="tooltip-text">Пожалуйста, подтвердите ваш пароль.</span>
+        <p id="confirmPassword-error" class="error-message"></p>
+    </div>
+    <button type="submit" class="btn btn-primary">Регистрация</button>
+    <p class="error-message">@ViewBag.Error</p>
+</form>
